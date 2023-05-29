@@ -9,15 +9,33 @@
 //   ReactDOM.createRoot(document.getElementById("root")).render(reactHeading);
 
 //! React with JSX
-const jsxHeading = (<React.Fragment>
+const jsxHeading =
+//? method 1- React Fragment
+// (<React.Fragment>
+//     <h1>
+//         Hello JSX!!
+//     </h1>
+//     <p>
+//         this is the paragraph
+//     </p>
+
+// </React.Fragment>
+// )
+//? method 2- Empty fragment
+(<>
     <h1>
         Hello JSX!!
     </h1>
     <p>
         this is the paragraph
+        <ul>
+            <li>About</li>
+            <li>Contact Us</li>
+            <li>Docs     </li>
+        </ul>
     </p>
 
-</React.Fragment>
+</>
 )
 ReactDOM.createRoot(document.getElementById("root")).render(jsxHeading);
 
