@@ -1,8 +1,7 @@
- 
-//! Component in React
 
-//react component
-function App(){
+//! Component in React
+//react Function component using Arrow Function
+const App = () => {
     return <>
         <h1>
             Hello JSX!!
@@ -18,7 +17,6 @@ function App(){
     
     </>
 }
-
-
 ReactDOM.createRoot(document.getElementById("root")).render(<App/>);// called it as component
 
+ 
