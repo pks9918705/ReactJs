@@ -1,8 +1,16 @@
 
 //! Component in React
+
+function Name(){
+    return (
+        <>
+        <p>JSX is Javascript XML</p>
+        </>
+    )
+}
 //react Function component using Arrow Function
-const App = () => {
-    return <>
+const App = () => (
+     <>
         <h1>
             Hello JSX!!
         </h1>
@@ -16,7 +24,8 @@ const App = () => {
         </p>
     
     </>
-}
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);// called it as component
+)
+//calling two components side by side
+ReactDOM.createRoot(document.getElementById("root")).render( <> <App/> <Name/> </> );// called it as component
 
  
