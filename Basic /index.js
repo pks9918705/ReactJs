@@ -22,10 +22,13 @@ const App = () => (
                 <li>Docs     </li>
             </ul>
         </p>
+
+        <Name/>  
     
     </>
 )
+// calling another comp fxn from other  components function
 //calling two components side by side
-ReactDOM.createRoot(document.getElementById("root")).render( <> <App/> <Name/> </> );// called it as component
+ReactDOM.createRoot(document.getElementById("root")).render(  <App/>   );// called it as component
 
  
