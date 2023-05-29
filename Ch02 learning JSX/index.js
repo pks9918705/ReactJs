@@ -9,6 +9,11 @@ function App(){
     var demo =null
     var bool=false
 
+    //function to embedded into JSX
+    function sum(a,b){
+        return a+b
+    }
+
     return(
     <>
          <h1>Lets Run JSX !!</h1>
@@ -16,6 +21,7 @@ function App(){
          <p>Age: {age}</p>
          <p>demo: {demo}</p>
          <p>Boolean: {bool}</p>
+         <p>Sum of 3 and 5: {sum(3,5)}</p>
         </>
        
     )
