@@ -10,8 +10,7 @@ function App(){
     var bool=false
 
     return(
-
-        <>
+    <>
          <h1>Lets Run JSX !!</h1>
          <p>Name: {name}</p>
          <p>Age: {age}</p>
