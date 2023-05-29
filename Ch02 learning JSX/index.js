@@ -7,11 +7,10 @@ function App() {
         name:"Alexa",
         age:23
     }
- 
 
-    
+    const cars=["BmW","TATA","Mahindra","Fortuner"]
 
-    return (
+   return (
         // returnig JSX to UI
         <>
             <h1>Lets Run JSX !!</h1>
@@ -21,8 +20,14 @@ function App() {
             <p>Name: {obj.name}</p>
             <p>Age: {obj.age}</p>
 
-            {/* Elemts of Array  */}
-            {a.map((num)=> <h2>{num}</h2>)}
+            {/* Elemts of Array - Line by Line  */}
+            {a.map((num)=> <h2> {num} </h2>)}
+
+            Printing unordered list
+            <ol>
+            { cars.map((car)=> <li>{car}</li>  )}
+            </ol>
+
               
         </>
 
