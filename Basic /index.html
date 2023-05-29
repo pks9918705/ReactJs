@@ -17,10 +17,13 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <p>This is P tag</p>
+    </div>
 
-    <script type="text/babel" src="/index.js">
+    <script type="text/babel" >
       // this script needs compilation so here we say use babel 
+      ReactDOM.createRoot(document.getElementById("root")).render(  <h1>this is h1</h1>  );
 
      
     </script>
