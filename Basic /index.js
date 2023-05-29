@@ -1,6 +1,5 @@
  
 //! Component in React
-const jsxHeading =
 
 //react component
 function App(){
