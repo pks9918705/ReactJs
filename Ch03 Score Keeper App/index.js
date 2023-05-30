@@ -4,14 +4,19 @@ let score = 0;
 let wicket = 0;
 
 function addOne() {
+    if(wicket<11){
     score += 1;
     console.log(score);
     rootElement.render(<App />)
+    }
 }
 function addScore(s) {
-    score += s;
+    if(wicket<11){
+        score += s;
     console.log(score);
     rootElement.render(<App />)
+    }
+    
 }
 function wicketFxn(){
 
