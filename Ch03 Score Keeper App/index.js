@@ -14,8 +14,12 @@ function addScore(s) {
     rootElement.render(<App />)
 }
 function wicketFxn(){
-    wicket += 1;
+
+    if(wicket<11){
+        wicket += 1;
     rootElement.render(<App />)
+    }
+    
 }
 //  Creating score keeper app
 function App() {
