@@ -3,14 +3,18 @@
 let score = 0;
 let wicket = 0;
 let ballWiseRes = []
+let hit = 0;
+//? creeating ref
+let inputRef=React.createRef()
 
 
 function addScore(s) {
     if (wicket < 11) {
-        score += s;
-        ballWiseRes.push(s)
+        hit = s
+        // score += s;
+        // ballWiseRes.push(s)
         // console.log(score);
-        console.log(ballWiseRes);
+        // console.log(ballWiseRes);
         rootElement.render(<App />)
 
     }
@@ -19,9 +23,11 @@ function addScore(s) {
 function wicketFxn() {
 
     if (wicket < 11) {
-        wicket += 1;
-        ballWiseRes.push("W")
-        console.log(ballWiseRes);
+        hit = "W"
+
+        // wicket += 1;
+        // ballWiseRes.push("W")
+        // console.log(ballWiseRes);
         rootElement.render(<App />)
     }
 
@@ -41,11 +47,14 @@ const ScoreButtons = () => (
         <button onClick={() => addScore(5)}>5</button>
         <button onClick={() => addScore(6)}>6</button>
         <button onClick={wicketFxn}>wicket</button>
+
+
     </div>
+
 
 )
 
-const spanStyle={
+const spanStyle = {
     color: 'red',
     fontWeight: 'bold',
     fontSize: '18px',
@@ -68,6 +77,46 @@ const Result = () => (
 
     </div>
 )
+//handler to prevent default submitting behaviour
+function handleSubmit(e) {
+    e.preventDefault()
+
+    
+    //! in array we can give html elements 
+    ballWiseRes.unshift(
+        // <span>{hit}{", "}{inputRef.current.value}</span>
+        <span>{`${hit} , ${inputRef.current.value}`}</span> 
+    )
+    console.log(ballWiseRes);
+
+    if(hit =="w" || hit == "W"){
+        wicket+=1;
+
+    }
+    else {
+        score += hit;
+    }
+
+    console.log('*******',inputRef.current.value);
+    //if you don't render App then see that inputRef.current.value is empty because it is not a react component (uncontrolled component) and resct does not suggest to use
+    inputRef.current.value=""
+    hit=0
+    
+    rootElement.render(<App />)
+
+}
+
+// creating a Form component 
+const Form = () => (
+    <form onSubmit={handleSubmit}>
+        <input value={hit} />
+         {/* we are extracting the value of input field by using refference(ref)
+        it provides us to access the value of node directly */}
+        {/* create a ref and assign the value below input box and now i can access it from anywhere */}
+        <input ref={inputRef} placeholder="Add comment" />
+        <button>Submit </button>
+    </form>
+)
 //  Creating score keeper app
 function App() {
 
@@ -78,7 +127,25 @@ function App() {
 
             {/* calling Score button component  */}
             <ScoreButtons />
-            <Result />
+            {/* <Result /> */}
+            <br />
+            <hr />
+            <Form />
+            <br />
+            <hr />
+
+            <div>
+                {ballWiseRes.map((ball, index) => (
+                    <p key={index}>{ball}</p>
+                )
+
+                )}
+
+            </div>
+
+
+
+
 
         </>
     );
