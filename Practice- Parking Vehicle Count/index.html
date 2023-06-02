@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>React App</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // Create handlers to increase and decrease vehicle count here
+      let countCar = 0;
+      let countBike = 0;
+      let countScooty = 0;
+      let countBicycle = 0;
+
+      //handler for car
+      function carHandler(sign) {
+        //  console.log('****',sign);
+
+        if (sign == "1") countCar += 1;
+        if (sign == "0") {
+          if (countCar != 0) {
+            countCar--;
+          }
+        }
+
+        rootElement.render(<App />);
+      }
+      //handler for bike
+      function bikeHandler(sign) {
+        if (sign == "1") countBike += 1;
+        if (sign == "0") {
+          if (countBike != 0) {
+            countBike--;
+          }
+        }
+
+        rootElement.render(<App />);
+      }
+      //handler for scooty
+      function scootyHandler(sign) {
+        if (sign == "1") countScooty += 1;
+        if (sign == "0") {
+          if (countScooty != 0) {
+            countScooty--;
+          }
+        }
+
+        rootElement.render(<App />);
+      }
+
+      //handler for bicycle
+      function bicycleHandler(sign) {
+        if (sign == "1") countBicycle += 1;
+        if (sign == "0") {
+          if (countBicycle != 0) {
+            countBicycle--;
+          }
+        }
+
+        rootElement.render(<App />);
+      }
+
+      const App = () => (
+        <>
+          <p>List of all the vehicles count in the parking.</p>
+          <ol>
+            <li>
+              <p>
+                <b>Car: </b> &emsp;
+                {/* Add increase and decrease count buttons here */}
+                <span>{countCar}&emsp; </span>
+                <button
+                  onClick={() => {
+                    carHandler(1);
+                  }}
+                >
+                  Increase
+                </button>
+                <button
+                  onClick={() => {
+                    carHandler(0);
+                  }}
+                >
+                  Decrease
+                </button>
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Bike: </b> &emsp;
+                {/* Add increase and decrease count buttons here */}
+                <span>{countBike}&emsp;</span>
+                <button
+                  onClick={() => {
+                    bikeHandler(1);
+                  }}
+                >
+                  Increase
+                </button>
+                <button
+                  onClick={() => {
+                    bikeHandler(0);
+                  }}
+                >
+                  Decrease
+                </button>
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Scooty: </b> &emsp;
+                {/* Add increase and decrease count buttons here */}
+                <span>{countScooty}&emsp;</span>
+                <button
+                  onClick={() => {
+                    scootyHandler(1);
+                  }}
+                >
+                  Increase
+                </button>
+                <button
+                  onClick={() => {
+                    scootyHandler(0);
+                  }}
+                >
+                  Decrease
+                </button>
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Bicycle:</b> &emsp;
+                {/* Add increase and decrease count buttons here */}
+                <span>{countBicycle}&emsp;</span>
+                <button
+                  onClick={() => {
+                    bicycleHandler(1);
+                  }}
+                >
+                  Increase
+                </button>
+                <button
+                  onClick={() => {
+                    bicycleHandler(0);
+                  }}
+                >
+                  Decrease
+                </button>
+              </p>
+            </li>
+          </ol>
+        </>
+      );
+
+      const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+      rootElement.render(<App />);
+    </script>
+  </body>
+</html>
