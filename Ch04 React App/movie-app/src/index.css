@@ -118,9 +118,19 @@ footer.starCount {
  
 }
 .favourite-btn {
-  background-color: #bc16dd;
+  
+  background-color: #dd1616;
   color: #fff;
   margin: 5px;
+  width: 15px;
+  text-align: center;
+}
+.un-favourite-btn {
+  background-color: #162add;
+  color: #fff;
+  margin: 5px;
+  width: 15px;
+  text-align: center;
 }
 .cart-btn{
   

@@ -12,9 +12,7 @@ class MovieCard extends Component {
             rating: 8.9,
             stars: 0,
             favourite: false,
-            styleForbtn:  {
-                backgroundColor:"green"
-            }
+             addToCart: false
 
         }
         //?below is the code to bind globally
@@ -74,11 +72,23 @@ class MovieCard extends Component {
         if (this.state.favourite) {
 
             this.setState({ favourite: false })
-            this.setState({  styleForbtn : {backgroundColor:"green"}})
+           
         }
         else {
             this.setState({ favourite: true })
-            this.setState({  styleForbtn : {backgroundColor:"red"}})
+            
+
+        }
+    }
+    handleAddToCart = () => {
+        if (this.state.addToCart) {
+
+            this.setState({ addToCart: false })
+           
+        }
+        else {
+            this.setState({ addToCart: true })
+            
 
         }
     }
@@ -113,9 +123,11 @@ class MovieCard extends Component {
                                 <img alt="increase" src="https://cdn-icons-png.flaticon.com/128/3524/3524388.png " className="str-btn" onClick={() => { this.starHandler("plus") }} />
                                 <span>{stars}</span>
                             </div>
-                            <div className="btn favourite-btn" style={this.state.styleForbtn} onClick={this.handleFav} > {this.state.favourite ? "Unfavourite" : "Favourite"}
+                            <div className={ !this.state.favourite ? "un-favourite-btn btn":"favourite-btn btn"}   onClick={this.handleFav} > {this.state.favourite ? "Unfavourite" : "Favourite"}
                             </div>
-                            <div className="btn cart-btn">Add to Cart
+                            <div className={ !this.state.addToCart ? "un-favourite-btn btn":"favourite-btn btn"}   onClick={this.handleAddToCart} > {this.state.addToCart ? "Remove" : "Add to Cart"}
+                            </div>
+                            <div className="btn  un-favourite-btn">Add to Cart
                             </div>
                         </div>
 
