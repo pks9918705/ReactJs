@@ -1,0 +1,11 @@
+.row{
+    /* background-color: aqua; */
+     margin-left: 6%;
+}
+@media (max-width: 400px) {
+    /* CSS styles for widths less than 400 pixels */
+    /* Add your styles here */
+    .btn{
+        height: 64px;
+    }
+  }

@@ -41,20 +41,43 @@
         "https://res.cloudinary.com/dl26pbek4/image/upload/v1674620718/assets/pexels-garvin-st-villier-3311574_ds8wrh.jpg",
       ];
 
-      var score=0;
-      const handleAdd=(inc) => {
-        score+=inc
-         console.log('***',score);
-         
-      }
-    
-   
-      const App = () =>  (
-        <button onClick={()=>handleAdd(1)}>1</button>
-      )
-       
+      const Login = () => (
+        <div>
+          <h3>Login to Continue</h3>
+          <form>
+            <input placeholder="email" />
+            <input placeholder="password" />
+            <button>Login</button>
+          </form>
+        </div>
+      );
 
-        
+      const Home = () => (
+        <div>
+           
+          <h3>Welcome to home!</h3>
+          <h5>Enjoy this catalog of pictures</h5>
+          {IMAGES.map((i) => (
+            <img key={i} src={i} />
+          ))}
+        </div>
+      );
+
+      // create premium account component here
+      const PremiumAccount = () => <button>Buy Premium</button>;
+
+      const App = () => {
+        const name = "John Doe";
+        const isLoggedIn = true;
+
+        return (
+          <>
+            <h1>Hello {name || "Guest"}!</h1>
+            {isLoggedIn && <PremiumAccount />}
+            {isLoggedIn ? <Home /> : <Login />}
+          </>
+        );
+      };
 
       const rootElement = ReactDOM.createRoot(document.getElementById("root"));
       rootElement.render(<App />);

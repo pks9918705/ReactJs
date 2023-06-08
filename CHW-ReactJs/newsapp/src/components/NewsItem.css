@@ -1,0 +1,21 @@
+.card{
+    /* border: 0.5px solid rgb(52, 51, 51); */
+    border-radius: 10px;
+    /* box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.3); */
+    /* height: 400px; */
+    overflow: scroll;
+
+
+}
+.author{
+    font-size: 0.7rem;
+}
+ 
+.badge{
+    width: auto;
+    background-color: red;
+    position: absolute;
+    left: 2%;
+    top: 1%;
+    box-sizing: content-box;
+}
