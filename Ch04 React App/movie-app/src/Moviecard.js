@@ -6,11 +6,16 @@ class MovieCard extends Component {
         //construtor of suoer class is called
         super()
         this.state = {
-            title:"The Avangers",
-            plot:"Supernatural powers shown in movie",
-            price:"Rs. 199",
-            rating:8.9,
-            stars:0
+            title: "The Avangers",
+            plot: "Supernatural powers shown in movie",
+            price: "Rs. 199",
+            rating: 8.9,
+            stars: 0,
+            favourite: false,
+            styleForbtn:  {
+                backgroundColor:"green"
+            }
+
         }
         //?below is the code to bind globally
         // this.addStar=this.addStar.bind(this)
@@ -18,97 +23,110 @@ class MovieCard extends Component {
     }
     // let numberOfstars=0;
     // increase star handler
-     
-    
-   
+
+
+
     //? function inside class
-    addStar=()=> {
-  
+    addStar = () => {
+
         //arrow function bind automatically
         // this.state.stars+=0.5;
         // console.log('*** stars',this.state.stars);
         //above re-rendering will not happen
- 
+
         //form 1- using setState
         // this.setState({
         //     stars: this.state.stars+0.5
         // })
         // this.setState({object})
- 
-        
+
+
     }
 
-    starHandler=(str)=> {
+    starHandler = (str) => {
 
         // console.log('Clicked');
-        
-        
+
+
         // console.log('clicked',str);
-        if(str === "plus"){
-            if(this.state.stars >=5  ){return}
+        if (str === "plus") {
+            if (this.state.stars >= 5) { return }
             //handle plus click
-            this.setState((prevState)=>{
+            this.setState((prevState) => {
                 return {
-                    stars:prevState.stars+0.5
+                    stars: prevState.stars + 0.5
                 }
             })
         }
-        else{
+        else {
             //handle minus click
-            if(this.state.stars<=0){return}
-            this.setState((prevState)=>{
-                 return {
-                    stars:prevState.stars-0.5
+            if (this.state.stars <= 0) { return }
+            this.setState((prevState) => {
+                return {
+                    stars: prevState.stars - 0.5
                 }
             })
         }
-        
+
+    }
+
+    handleFav = () => {
+        if (this.state.favourite) {
+
+            this.setState({ favourite: false })
+            this.setState({  styleForbtn : {backgroundColor:"green"}})
+        }
+        else {
+            this.setState({ favourite: true })
+            this.setState({  styleForbtn : {backgroundColor:"red"}})
+
+        }
     }
 
     render() {
 
 
         //destructing the object
-        const {title,plot,price,rating,stars}=this.state
+        const { title, plot, price, rating, stars } = this.state
         // the above is done so that u dont have to use "this.state.title" 
 
         return (
             <div className="main">
-            <div className="movie-card">
-                <div className="left">
-                    <img alt="poster" src="https://c8.alamy.com/comp/FXEAGB/avengers-assemble-2012-directed-by-joss-whedon-and-starring-robert-FXEAGB.jpg"/>
+                <div className="movie-card">
+                    <div className="left">
+                        <img alt="poster" src="https://c8.alamy.com/comp/FXEAGB/avengers-assemble-2012-directed-by-joss-whedon-and-starring-robert-FXEAGB.jpg" />
 
 
-                </div>
-                <div className="right">
-                    <div className="title">{this.state.title}</div>
-                    <div className="plot"> {plot}</div>
-                    <div className="price">{price}</div>
-                    <div className="footer">
-                        <div className="rating">{rating}
-                        </div>
-                        <div className="star-dis">
-                            <img alt="decrease" src="https://t3.ftcdn.net/jpg/04/22/93/56/240_F_422935625_gTnXZMO6EZZgjOvFDVNMfUFosiMNIppp.jpg " className="str-btn" onClick={()=>{this.starHandler("minus")}}  />
+                    </div>
+                    <div className="right">
+                        <div className="title">{this.state.title}</div>
+                        <div className="plot"> {plot}</div>
+                        <div className="price">{price}</div>
+                        <div className="footer">
+                            <div className="rating">{rating}
+                            </div>
+                            <div className="star-dis">
+                                <img alt="decrease" src="https://t3.ftcdn.net/jpg/04/22/93/56/240_F_422935625_gTnXZMO6EZZgjOvFDVNMfUFosiMNIppp.jpg " className="str-btn" onClick={() => { this.starHandler("minus") }} />
 
-                            <img alt="star" src="https://cdn-icons-png.flaticon.com/128/1828/1828884.png" className="stars"/>
+                                <img alt="star" src="https://cdn-icons-png.flaticon.com/128/1828/1828884.png" className="stars" />
 
-                            <img alt="increase" src="https://cdn-icons-png.flaticon.com/128/3524/3524388.png " className="str-btn" onClick={()=>{this.starHandler("plus")} }  />
-                            <span>{stars}</span>
+                                <img alt="increase" src="https://cdn-icons-png.flaticon.com/128/3524/3524388.png " className="str-btn" onClick={() => { this.starHandler("plus") }} />
+                                <span>{stars}</span>
+                            </div>
+                            <div className="btn favourite-btn" style={this.state.styleForbtn} onClick={this.handleFav} > {this.state.favourite ? "Unfavourite" : "Favourite"}
+                            </div>
+                            <div className="btn cart-btn">Add to Cart
+                            </div>
                         </div>
-                        <div className="btn favourite-btn"> Favourite
-                        </div>
-                        <div className="btn cart-btn">Add to Cart
-                        </div>
+
                     </div>
 
                 </div>
 
             </div>
 
-         </div>
-
         )
-         
+
     }
 }
 
