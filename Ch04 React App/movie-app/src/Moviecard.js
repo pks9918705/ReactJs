@@ -1,7 +1,7 @@
 import { Component } from "react";
 import './Moviecard.css'
 
-class MovieCard extends Component {
+class Moviecard extends Component {
     constructor() {
         //construtor of suoer class is called
         super()
@@ -127,8 +127,7 @@ class MovieCard extends Component {
                             </div>
                             <div className={ !this.state.addToCart ? "un-favourite-btn btn":"favourite-btn btn"}   onClick={this.handleAddToCart} > {this.state.addToCart ? "Remove" : "Add to Cart"}
                             </div>
-                            <div className="btn  un-favourite-btn">Add to Cart
-                            </div>
+                             
                         </div>
 
                     </div>
@@ -142,7 +141,7 @@ class MovieCard extends Component {
     }
 }
 
-export default MovieCard;
+export default Moviecard;
 
 //! Binding can be done in 3 ways
 // 1. using arrow functions
@@ -163,3 +162,17 @@ export default MovieCard;
         //         stars:prevState.stars+0.5
         //     }
         // })
+
+
+
+        About.defaultProps={
+            name:"Monobaen",
+            info:{
+                since:1980,
+                moto :"crypto is the future"
+            }
+        }
+
+        export default function App(){
+            return <About  />
+        }
