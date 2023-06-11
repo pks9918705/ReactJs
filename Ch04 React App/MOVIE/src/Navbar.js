@@ -18,6 +18,7 @@ right: 10px;
 top:5px;
 font-size:22px;
 color:red;
+visibility: ${(props)=> (props.show) ? 'visible' : 'hidden'};
 `
 
 
@@ -34,7 +35,7 @@ export default class Navbar extends Component {
           <img style={{ height: '50px', padding: "10px" }} src="https://cdn-icons-png.flaticon.com/128/2838/2838838.png" alt="err" />
 
 
-          <CardCount color='yellow'>10</CardCount>
+          <CardCount color='yellow' show={true}>10</CardCount>
 
         </div>
       </NavOuter>
