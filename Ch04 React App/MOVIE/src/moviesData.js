@@ -6,7 +6,7 @@ export const movies =[
         rating: 8.9,
         stars: 0,
         favourite: false,
-        addToCart: true
+        addToCart: false
       },
     {
         title: "The AntMan",

@@ -33,11 +33,11 @@ class Moviecard extends Component {
 
         
 
-         console.log('Props',this.props);
+        //  console.log('Props',this.props);
 
          //exracting Movie and starHandler from props
          const {movie,starHandler,addToCartHandler,addToFavHandler } = this.props
-         console.log('this is movie',movie);
+        //  console.log('this is movie',movie);
          
 
          //extracting property from movie
