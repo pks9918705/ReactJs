@@ -1,6 +1,8 @@
 import { Component } from "react";
 import './Moviecard.css'
 
+
+
 class Moviecard extends Component {
     
  

@@ -1,6 +1,8 @@
 
 //! App is as  a functional component
 
+//TODO: leave App class and convert all other components in functions
+
 
 import MovieList from './MovieList';
 import Navbar from './Navbar';
@@ -67,8 +69,8 @@ export default class App extends Component {
     console.log("final", movies[mid].addToCart)
 
     this.setState({
-      movies: movies,
-      itemToKart: itemToKart
+      movies:movies ,
+      itemToKart:itemToKart 
     })
   }
   addToFavHandler = (movie) => {
