@@ -36,12 +36,12 @@ class Moviecard extends Component {
          console.log('Props',this.props);
 
          //exracting Movie and starHandler from props
-         const {movie,starHandler} = this.props
+         const {movie,starHandler,addToCartHandler,addToFavHandler } = this.props
          console.log('this is movie',movie);
          
 
          //extracting property from movie
-         const {title,plot,price,rating,stars}=movie
+         const {title,plot,price,rating,stars,addToCart,favourite}=movie
 
           
 
@@ -72,10 +72,10 @@ class Moviecard extends Component {
                                 <img alt="increase" src="https://cdn-icons-png.flaticon.com/128/3524/3524388.png " className="str-btn" onClick={() => { starHandler( movie,"plus")   }} />
                                 <span>{stars}</span>
                             </div>
-                            {/* <div className={ !this.state.favourite ? "un-favourite-btn btn":"favourite-btn btn"}   onClick={this.handleFav} > {this.state.favourite ? "Unfavourite" : "Favourite"}
-                            </div> */}
-                            {/* <div className={ !this.state.addToCart ? "un-favourite-btn btn":"favourite-btn btn"}   onClick={this.handleAddToCart} > {this.state.addToCart ? "Remove" : "Add to Cart"}
-                            </div>  */}
+                            <div className={ ! favourite ? "un-favourite-btn btn":"favourite-btn btn"}   onClick={ ()=>{addToFavHandler(movie)}} > { favourite ? "Unfavourite" : "Favourite"}
+                            </div>
+                            <div className={ ! addToCart ? "un-favourite-btn btn":"favourite-btn btn"} onClick={()=>{addToCartHandler(movie)}} > { addToCart ? "Remove" : "Add to Cart"}
+                            </div> 
                              
                         </div>
 

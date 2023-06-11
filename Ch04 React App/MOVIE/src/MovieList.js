@@ -1,29 +1,13 @@
 import React, { Component } from 'react'
 import Moviecard from './Moviecard'
+import {movies} from './moviesData'
 
 export default class MovieList extends Component {
   //construtor of suoer class is called
   constructor(){
     super()
     this.state = {
-      movies: [ {
-        title: "The Thor",
-        plot: "Supernatural powers shown in movie",
-        price: "Rs. 199",
-        rating: 8.9,
-        stars: 0,
-        favourite: false,
-        addToCart: false
-      },
-    {
-        title: "The AntMan",
-        plot: "Supernatural powers shown in movie",
-        price: "Rs. 199",
-        rating: 8.9,
-        stars: 0,
-        favourite: false,
-        addToCart: false
-      }]
+      movies: movies
     }
     
   }
@@ -50,6 +34,32 @@ export default class MovieList extends Component {
     // since array is changed so state is changed, so rerendering takes place
  
   }
+  addToCartHandler=(movie)=>{
+
+    const {movies}=this.state
+    const mid = movies.indexOf(movie);
+
+    console.log("inital",movies[mid].addToCart)
+
+    movies[mid].addToCart= !movies[mid].addToCart
+
+    console.log("final",movies[mid].addToCart)
+
+  this.setState({movies:movies})
+  }
+  addToFavHandler=(movie)=>{
+
+    const {movies}=this.state
+    const mid = movies.indexOf(movie);
+
+    console.log("inital",movies[mid].favourite)
+
+    movies[mid].favourite= !movies[mid].favourite
+
+    console.log("final",movies[mid].favourite)
+
+  this.setState({movies:movies})
+  }
   render() {
 
     // we are destructing movies array from state
@@ -58,7 +68,7 @@ export default class MovieList extends Component {
       <div>
         <h1>Movie List</h1>
          {movies.map((movie)=> 
-         ( <Moviecard movie={movie} starHandler={this.starHandler}  />)
+         ( <Moviecard movie={movie} starHandler={this.starHandler} addToCartHandler={this.addToCartHandler} addToFavHandler={this.addToFavHandler}  />)
          )}
         
       </div>

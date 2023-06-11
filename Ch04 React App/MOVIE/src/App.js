@@ -4,16 +4,22 @@
 
 import MovieList from './MovieList';
 import Navbar from './Navbar';
-// import MovieCard from './Moviecard'
+//creating a variable for item count in cart
 
-function App() {
-  return (
-    <>
-    <Navbar/>
-    <h1>Movie App</h1>
-    <MovieList/>
-    </>
-  );
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  
+  render() {
+    return (
+      <>
+      <Navbar/>
+      <h1>Movie App</h1>
+      <MovieList/>
+      </>
+    )
+  }
 }
 
-export default App;
+
+ 
