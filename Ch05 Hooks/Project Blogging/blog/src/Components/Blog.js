@@ -1,87 +1,98 @@
-import {useState} from 'react'
-//Blogging App using Hooks
-export default function Blog(){
+import React, { useRef, useState, useEffect } from 'react';
+
+export default function Blog() {
+    const [formData, setFormData] = useState({ title: '', content: '' });
+    const [blogs, setBlogs] = useState([]);
+    //holding the reffeernce
+    const inputRef = useRef(null);
 
 
-    let [title,setTitle]=useState("")
-    let [content,setContent]=useState("")
-    //  array to store a title and content together as array
-    let [blogs,setBlogs]=useState([])
+    //this is for putting focus when the website is loaded first
+    // this is equivalent to componentDidMount() - when we use empty array in 2nd argument
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
+    //!   why we are using the useEffect to set the focus on input field
+    //   Using the useEffect hook to set focus on an input field is a common approach because it ensures that the focus is set after the component has rendered and the input field is available in the DOM.
 
-    
-    //Passing the synthetic event as argument to stop refreshing the page on submit
-    async function handleSubmit (e){
+    //! title should be changed when we Add a blog - uwe use useEffect as componentDidUpdate()--so we need to put blogs in array so when array is updated is works
+    useEffect(() => {
+        if(blogs.length && blogs[0].title)
+        document.title=blogs[0].title
+        else
+        document.title="NO blogs"
+    }, [blogs]);
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-
-       await setBlogs([{title,content},...blogs])
-        
-       
-       await setTitle("")
-       await setContent("")
-
-       console.log("***",title);
-       console.log("***",content);
-       
+        setBlogs([{ title: formData.title, content: formData.content }, ...blogs]);
+        setFormData({ title: '', content: '' });
+        //inputRef k current m jo store hai use hoga
+        inputRef.current.focus();
 
 
-        
-    
 
-    }
+    };
 
-    return(
+    const removeBlog = (i) => {
+        setBlogs(blogs.filter((blog, index) => i !== index));
+    };
+
+    return (
         <>
-        {/* Heading of the page */}
-        <h1>Write a Blog!</h1>
+            <h1>Write a Blog!</h1>
+            <div className="section">
+                <form onSubmit={handleSubmit}>
+                    <Row label="Title">
+                        <input
+                            className="input"
+                            value={formData.title}
+                            ref={inputRef}
 
-        {/* Division created to provide styling of section to the form */}
-        <div className="section">
-
-        {/* Form for to write the blog */}
-            <form onSubmit={handleSubmit}>
-
-                {/* Row component to create a row for first input field */}
-                <Row label="Title">
-                        <input className="input"   value={title} onChange={(e)=>setTitle(e.target.value)}
-                                placeholder="Enter the Title of the Blog here.."/>
-                </Row >
-
-                {/* Row component to create a row for Text area field */}
-                <Row label="Content">
-                        <textarea className="input content" value={content} onChange={(e)=>setContent(e.target.value)}
-                                placeholder= "Content of the Blog goes here.."/>
-                </Row >
-
-                {/* Button to submit the blog */}            
-                <button className = "btn">ADD</button>
-            </form>
-                     
-        </div>
-
-        <hr/>
-
-        {/* Section where submitted blogs will be displayed */}
-        <h2> Blogs </h2>
-        {blogs.map((blog,i)=>(
-            <div className="blog" key={i}>
-                <h3>{blog.title}</h3>
-                <p>{blog.content}</p>
-
+                            onChange={(e) =>
+                                setFormData({ ...formData, title: e.target.value })
+                            }
+                            placeholder="Enter the Title of the Blog here.."
+                        />
+                    </Row>
+                    <Row label="Content">
+                        <textarea
+                            className="input content"
+                            value={formData.content}
+                            onChange={(e) =>
+                                setFormData({ ...formData, content: e.target.value })
+                            }
+                            placeholder="Content of the Blog goes here.."
+                            required
+                        />
+                    </Row>
+                    <button className="btn">ADD</button>
+                </form>
             </div>
-        ))}
-        
+            <hr />
+            <h2>Blogs</h2>
+            {blogs.map((blog, i) => (
+                <div className="blog" key={i}>
+                    <h3>{blog.title}</h3>
+                    <p>{blog.content}</p>
+                    <div className="blog-btn">
+                        <button onClick={() => removeBlog(i)} className="btn remove">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            ))}
         </>
-        )
-    }
+    );
+}
 
-//Row component to introduce a new row section in the form
-function Row(props){
-    const{label} = props;
-    return(
+function Row(props) {
+    const { label } = props;
+    return (
         <>
-        <label>{label}<br/></label>
-        {props.children}
-        <hr />
+            <label>{label}<br /></label>
+            {props.children}
+            <hr />
         </>
-    )
+    );
 }
