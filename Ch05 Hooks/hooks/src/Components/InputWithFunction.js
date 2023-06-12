@@ -11,11 +11,18 @@ export default function Input(){
     //     document.title=name+" "+lastName
     // })
     //? bwlow will render when the lastName is updated
-    useEffect(() => {
-        document.title=name+" "+lastName
-    },[lastName])
+    // useEffect(() => {
+    //     document.title=name+" "+lastName
+    // },[lastName])
     
 
+    useEffect(() => {
+        let timer=setInterval(() =>{
+            console.log('window width',window.innerWidth);
+            
+        },2000)
+        return (clearInterval(timer))
+    })
 
 
 
