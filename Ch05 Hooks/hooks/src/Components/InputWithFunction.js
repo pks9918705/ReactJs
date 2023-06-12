@@ -1,10 +1,23 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 
 export default function Input(){
 
     //using stateHook
     const [name,setName]=useState("")
     const [lastName,setLastName]=useState("")
+
+    //? using useEffect- it is equivalent to didMount and didUpdate
+    // useEffect(() => {
+    //     document.title=name+" "+lastName
+    // })
+    //? bwlow will render when the lastName is updated
+    useEffect(() => {
+        document.title=name+" "+lastName
+    },[lastName])
+    
+
+
+
 
    
    
