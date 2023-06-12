@@ -5,6 +5,8 @@ export default function Input(){
     //using stateHook
     const [name,setName]=useState("")
     const [lastName,setLastName]=useState("")
+
+   
    
     return(
         <>
@@ -18,6 +20,7 @@ export default function Input(){
         </div>
 
         <h2>Hello, {name} {lastName} </h2>
+         
         
         </>
         )

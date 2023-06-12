@@ -20,6 +20,12 @@ export default class Input extends Component {
       lastName: e.target.value
     });
   };
+  componentDidMount(){
+    document.title=this.state.name+" "+this.state.lastName
+  }
+  componentDidUpdate(){
+    document.title=this.state.name+" "+this.state.lastName
+  }
 
   render() {
     return (
