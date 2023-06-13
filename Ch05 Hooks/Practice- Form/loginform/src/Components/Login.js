@@ -1,24 +1,13 @@
 import { useState, useEffect } from "react";
+import useLocalStorage from "./useLocalStorage";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+ 
   const [password, setPassword] = useState("");
 
-   // below side effect - if any email is already present-- and it works only for once
-   useEffect(() => {
-
-    let getEmail = localStorage.getItem("email");
-    if(getEmail){
-      setEmail(getEmail)
-    }
-  }, [ ])
-  //useEffect to save email in localstorage
-  // this side effect is working whenever email is updated
-  useEffect(() => {
-    localStorage.setItem("email", email);
-  }, [email])
+  //destructing from useLocalStorage
+  const {email, setEmail}=useLocalStorage() 
  
-    
 
   return (
     
