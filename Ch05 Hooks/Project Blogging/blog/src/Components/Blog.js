@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useReducer } from 'react';
 import { db } from '../firebaseInit'
 
-import { collection, addDoc, getDocs, doc, onSnapshot } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, onSnapshot,deleteDoc } from "firebase/firestore";
 
 
 // function blogsReducer(state, action) {
@@ -64,22 +64,24 @@ export default function Blog() {
         console.log('** I am Running');
 
         async function getBlogs() {
-             
-              onSnapshot(collection(db,"blogs"), (snapShot) => {
+
+            //this is RealTime Update is Working
+
+            await onSnapshot(collection(db, "blogs"), (snapShot) => {
                 const blogs = snapShot.docs.map((doc) => {
-                        return{
-                            id: doc.id,
-                            ...doc.data()
-                        }
-                    })
-                    console.log(blogs);
-                    setBlogs(blogs);
+                    return {
+                        id: doc.id,
+                        ...doc.data()
+                    }
+                })
+                console.log(blogs);
+                setBlogs(blogs);
             })
 
         }
         getBlogs()
 
-    },[])
+    }, [])
     const handleSubmit = async (e) => {
         e.preventDefault();
         // setBlogs([{ title: formData.title, content: formData.content }, ...blogs]);
@@ -99,15 +101,21 @@ export default function Blog() {
         // dispatch({ type: "ADD", blog: { title: formData.title, content: formData.content } })
         // setBlogs({title: formData.title, content: formData.content})
         setFormData({ title: '', content: '' });
+        //!above will make the component to render again 
         //inputRef k current m jo store hai use hoga
         inputRef.current.focus();
 
 
     };
 
-    const removeBlog = (i) => {
+    const removeBlog = async (i) => {
         // setBlogs(blogs.filter((blog, index) => i !== index));
         // dispatch({ type: "REMOVE", index: i })
+        console.log('i=',i);
+        //you have to bring id here
+        await deleteDoc(doc(db, "blogs", i ));
+
+
     };
 
     return (
@@ -150,7 +158,7 @@ export default function Blog() {
                     <h3>{blog.title}</h3>
                     <p>{blog.content}</p>
                     <div className="blog-btn">
-                        <button onClick={() => removeBlog(i)} className="btn remove">
+                        <button onClick={() => removeBlog(blog.id)} className="btn remove">
                             Delete
                         </button>
                     </div>
