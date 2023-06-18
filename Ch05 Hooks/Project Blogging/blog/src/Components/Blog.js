@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useReducer } from 'react';
 import { db } from '../firebaseInit'
 
-import { collection, addDoc, getDocs, doc } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, onSnapshot } from "firebase/firestore";
 
 
 // function blogsReducer(state, action) {
@@ -14,6 +14,10 @@ import { collection, addDoc, getDocs, doc } from "firebase/firestore";
 //             return [];
 //     }
 // }
+
+//TODO: Realtime update
+//TODO: deleting feature
+
 
 
 export default function Blog() {
@@ -47,7 +51,7 @@ export default function Blog() {
 
 
     // })
-    //! title should be changed when we Add a blog - uwe use useEffect as componentDidUpdate()--so we need to put blogs in array so when array is updated is works
+    //! title should be changed when we Add a blog -  we use useEffect as componentDidUpdate()--so we need to put blogs in array so when array is updated is works
     // useEffect(() => {
     //     if(blogs.length && blogs[0].title)
     //     document.title=blogs[0].title
@@ -57,28 +61,25 @@ export default function Blog() {
 
     useEffect(() => {
 
+        console.log('** I am Running');
+
         async function getBlogs() {
-            const snapshot = await getDocs(collection(db, "blogs"));
-            //The id property of the new object is set to doc.id, which represents the document ID of the current snapshot.
-
-            // The spread operator (...doc.data()) is used to expand the data() method of the QueryDocumentSnapshot object. The data() method retrieves the field-value pairs of the document's data.
-
-            // By using the spread operator, all the field-value pairs of the document are included as properties in the new object. This allows you to access the data using dot notation (e.g., blog.title, blog.author, etc.), where blog represents an element in the blogs array.
-            const blogs = snapshot.docs.map((doc) => {
-                return {
-                    id: doc.id,
-                    ...doc.data()
-                }
+             
+              onSnapshot(collection(db,"blogs"), (snapShot) => {
+                const blogs = snapShot.docs.map((doc) => {
+                        return{
+                            id: doc.id,
+                            ...doc.data()
+                        }
+                    })
+                    console.log(blogs);
+                    setBlogs(blogs);
             })
-            console.log('****', blogs);
-
-            setBlogs(blogs)
-
 
         }
         getBlogs()
 
-    }, [blogs])
+    },[])
     const handleSubmit = async (e) => {
         e.preventDefault();
         // setBlogs([{ title: formData.title, content: formData.content }, ...blogs]);
@@ -91,6 +92,7 @@ export default function Blog() {
             content: formData.content
         });
         console.log("Document written with ID: ", docRef.id);
+        console.log("Blog is added");
 
 
 
@@ -99,10 +101,6 @@ export default function Blog() {
         setFormData({ title: '', content: '' });
         //inputRef k current m jo store hai use hoga
         inputRef.current.focus();
-
-
-
-
 
 
     };
