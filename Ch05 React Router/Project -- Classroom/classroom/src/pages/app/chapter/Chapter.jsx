@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "./Chapter.module.css";
+import { useParams ,useOutletContext} from "react-router-dom";
 
-function Chapter() {
+function Chapter( ) {
+
+  const {id}=useParams()
+  const course=useOutletContext()
+  console.log("Your chapter " ,id)
+  console.log("Your chapter is " ,course)
   return (
     <div>
       <h1>**CHAPTER TITLE**</h1>
