@@ -8,10 +8,10 @@ function ItemCard({ name, price }) {
 
   //consuming context
   const valueItem=useContext(itemContext)
-  const valueTotal=useContext(totalContext)
+  // const valueTotal=useContext(totalContext)
 
   const {item,setItem}=valueItem
-  const {total,setTotal}=valueTotal
+  const {total,setTotal}=valueItem
 
   //  console.log("%%%%",item, total )
 
