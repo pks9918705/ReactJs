@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "../styles/Total.module.css";
-import { useContext } from "react";
-import { itemContext } from "../itemContext";
-// import { totalContext } from "../totalContext";
+
+import {  useValue } from "../itemContext";
+
 
 
 function Navbar() {
 
-  //consumig the value
-  const { item,total}=useContext(itemContext)
-  // const {total}=useContext(totalContext)
+  
+  const {item,total}=useValue()
+  // here we are directly calling the function becausee we have created a custom Hook
 
   return (
     <div className={styles.container}>

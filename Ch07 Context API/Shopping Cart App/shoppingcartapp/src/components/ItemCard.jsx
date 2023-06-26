@@ -1,17 +1,20 @@
 import React from "react";
 import styles from "../styles/ItemCard.module.css";
-import { useContext } from "react";
-import { itemContext } from "../itemContext";
-import { totalContext } from "../totalContext";
+import { useValue } from "../itemContext";
+// import { useContext } from "react";
+// import { itemContext } from "../itemContext";
+
+ 
 
 function ItemCard({ name, price }) {
 
   //consuming context
-  const valueItem=useContext(itemContext)
+  // const valueItem=useContext(itemContext)
   // const valueTotal=useContext(totalContext)
 
-  const {item,setItem}=valueItem
-  const {total,setTotal}=valueItem
+  // const {item,setItem}=valueItem
+  // const {total,setTotal}=valueItem
+  const {total,setTotal,item,setItem}=useValue()
 
   //  console.log("%%%%",item, total )
 

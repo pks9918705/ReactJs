@@ -3,10 +3,7 @@ import './App.css';
 import Items from './components/Items';
 import Navbar from './components/Navbar';
 import CustomItemContext  from './itemContext';
- import { itemContext } from './itemContext';
- import { totalContext } from './totalContext';
-
-
+ 
 
 function App() {
 
