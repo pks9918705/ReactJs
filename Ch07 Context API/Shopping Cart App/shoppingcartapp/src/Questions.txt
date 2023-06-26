@@ -19,3 +19,17 @@ By organizing the handlers in the context file, it promotes code reusability, si
 ****************************************************************
 
 
+Question: Why we have move all the handlers and cretaed custom hook ?
+
+Answer:
+It is done because 
+-> we increase the readiablity
+-> we can debug more easily because we know what all component are using the context 
+-> Maintainable code
+
+
+
+****************************************************************
+
+
+

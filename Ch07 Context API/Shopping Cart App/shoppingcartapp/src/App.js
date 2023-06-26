@@ -1,4 +1,5 @@
 import './App.css';
+import Cart from './components/Cart';
 
 import Items from './components/Items';
 import Navbar from './components/Navbar';
@@ -16,7 +17,10 @@ function App() {
 
         <Items />
 
+        <Cart/>
+
       </CustomItemContext>
+      
 
  
     </div>
