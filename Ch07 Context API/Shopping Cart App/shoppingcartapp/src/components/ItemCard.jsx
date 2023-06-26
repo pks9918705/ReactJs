@@ -34,7 +34,7 @@ const { handleAdd, handleRemove } = useValue();
         </button>
         <button
           className={styles.itemButton}
-          onClick={() => handleRemove(price)}
+          onClick={() => handleRemove(id)}
         >
           Remove
         </button>

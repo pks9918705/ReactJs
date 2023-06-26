@@ -39,7 +39,7 @@ export default function CustomItemContext({ children }) {
 
         if (existingItem) {
             existingItem.quantity += 1;
-            setTotal((prev)=>prev+existingItem.price)
+            setTotal((prev) => prev + existingItem.price)
         } else {
             const itemToAdd = data.find((item) => item.id === id);
 
@@ -57,7 +57,7 @@ export default function CustomItemContext({ children }) {
         }
 
         setItem((prevItem) => prevItem + 1);
-        
+
 
 
     };
@@ -71,6 +71,16 @@ export default function CustomItemContext({ children }) {
         //     setItem(item - 1)
         //     setTotal(total - price)
         // }
+        const existingItem = cartItem.find(obj => obj.id === id)
+        if (existingItem && existingItem.quantity > 0) {
+            existingItem.quantity -= 1;
+            setTotal((prevTotal) => prevTotal - existingItem.price);
+
+            if (existingItem.quantity === 0) {
+                setCartItem((prevItems) => prevItems.filter((item) => item.id !== id));
+            }
+        }
+
 
     }
 
