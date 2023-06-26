@@ -26,37 +26,38 @@ export default function CustomItemContext({ children }) {
 
 
     // defineing handler here
-     const handleAdd = (id) => {
+    const handleAdd = (id) => {
 
         console.log("just clicked on Add buttoon")
 
         // find the item from the itemData 
         // add it in the total
         // add to the cartItem array 
+        const existingItem = cartItem.find(obj => obj.id === id)
 
+        //? finding the item in the cartItem array
 
-        // finding item from the itemData
-        const itemFind =  data.find(obj => obj.id === id);
+        if (existingItem) {
+            existingItem.quantity += 1;
+            setTotal((prev)=>prev+existingItem.price)
+        } else {
+            const itemToAdd = data.find((item) => item.id === id);
 
-        if (itemFind) {
-            //  if found
-            console.log("Item found", itemFind);
+            if (itemToAdd) {
+                const newItem = {
+                    id: itemToAdd.id,
+                    name: itemToAdd.name,
+                    price: itemToAdd.price,
+                    quantity: 1
+                };
 
+                setCartItem((prevItems) => [...prevItems, newItem]);
+                setTotal((prevTotal) => prevTotal + itemToAdd.price);
+            }
         }
-        const newItem = {
-            id:itemFind.id,
-            name: itemFind.name,
-            price: itemFind.price,
-            quantity:1
 
-        }
-
-         setCartItem((prevData) => [...prevData, newItem])
-
-         console.log("****",cartItem)
-        setItem(item + 1)
-        setTotal(total + itemFind.price)
-
+        setItem((prevItem) => prevItem + 1);
+        
 
 
     };
@@ -80,7 +81,7 @@ export default function CustomItemContext({ children }) {
     }
 
     return (
-        <itemContext.Provider value={{ handleAdd, handleRemove, total, item, setItem, setTotal, resetCart,cartItem }}>
+        <itemContext.Provider value={{ handleAdd, handleRemove, total, item, setItem, setTotal, resetCart, cartItem }}>
 
             {children}
 
