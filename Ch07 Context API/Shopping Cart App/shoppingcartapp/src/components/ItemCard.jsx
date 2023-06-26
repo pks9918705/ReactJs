@@ -4,46 +4,38 @@ import { useValue } from "../itemContext";
 // import { useContext } from "react";
 // import { itemContext } from "../itemContext";
 
- 
-
 function ItemCard({ name, price }) {
 
-  //consuming context
-  // const valueItem=useContext(itemContext)
-  // const valueTotal=useContext(totalContext)
 
-  // const {item,setItem}=valueItem
-  // const {total,setTotal}=valueItem
-  const {total,setTotal,item,setItem}=useValue()
+const { handleAdd, handleRemove } = useValue();
 
-  //  console.log("%%%%",item, total )
+  //! we move these handler to context.js
+  // const handleAdd = () => {
 
-  const handleAdd = () => {
+  //   setItem(item+1)
+  //   setTotal(total+price)
 
-    setItem(item+1)
-    setTotal(total+price)
+  // };
 
+  // const handleRemove = () => {
 
-  };
-
-  const handleRemove = () => {
-
-    if(item>0){
-      setItem(item-1)
-      setTotal(total-price)
-    }
-    
-  };
+  //   if(item>0){
+  //     setItem(item-1)
+  //     setTotal(total-price)
+  //   }
 
   return (
     <div className={styles.itemCard}>
       <div className={styles.itemName}>{name}</div>
       <div className={styles.itemPrice}>&#x20B9; {price}</div>
       <div className={styles.itemButtonsWrapper}>
-        <button className={styles.itemButton} onClick={() => handleAdd()}>
+        <button className={styles.itemButton} onClick={() => handleAdd(price)}>
           Add
         </button>
-        <button className={styles.itemButton} onClick={() => handleRemove()}>
+        <button
+          className={styles.itemButton}
+          onClick={() => handleRemove(price)}
+        >
           Remove
         </button>
       </div>

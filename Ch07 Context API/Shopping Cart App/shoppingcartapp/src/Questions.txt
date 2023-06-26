@@ -1,0 +1,21 @@
+Question: Why handlers are moved to context file?
+
+Answer:
+In the provided code, the handlers (i.e., `handleAdd` and `handleRemove`) are moved to the context file for a couple of reasons:
+
+1. Centralized State and Logic: Placing the handlers in the context file allows for a centralized location to manage the state and associated logic. By having the handlers in the same file as the context provider, it becomes easier to maintain and update the state and its related functions.
+
+2. Accessible to Multiple Components: Moving the handlers to the context file makes them accessible to multiple components that are wrapped within the context provider. Components can simply import the context and use the provided handlers without having to redefine them in each component separately.
+
+3. Custom Hook: The code also defines a custom hook `useValue()` that returns the value from the `itemContext`. This allows components to use the hook to access the values and handlers from the context without explicitly importing and using `useContext` in each component file.
+
+By organizing the handlers in the context file, it promotes code reusability, simplifies component implementation, and ensures consistent access to state and handlers across different components that use the context.
+
+
+
+
+
+
+****************************************************************
+
+
