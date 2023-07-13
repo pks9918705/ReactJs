@@ -6,7 +6,7 @@ export const ADD_TODO = "Add ToDo"
 export const TOGGLE_TODO = "Toggle TODO"
 
 
-//Action Creators
+//Action Creators-these the objects
 export const addTodo = (text) => ({
     text, type: ADD_TODO
 })
