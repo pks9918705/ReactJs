@@ -1,0 +1,65 @@
+{
+    "trips": [
+      {
+        "id": 1,
+        "title": "Trip 1",
+        "price": 1000,
+        "location": "Dubai"
+      },
+      {
+        "id": 2,
+        "title": "Trip 2",
+        "price": 1500,
+        "location": "Dubai"
+      },
+      {
+        "id": 3,
+        "title": "Trip 3",
+        "price": 1200,
+        "location": "Dubai"
+      },
+      {
+        "id": 4,
+        "title": "Trip 4",
+        "price": 1800,
+        "location": "Dubai"
+      },
+      {
+        "id": 5,
+        "title": "Trip 5",
+        "price": 900,
+        "location": "Dubai"
+      },
+      {
+        "id": 6,
+        "title": "Trip 6",
+        "price": 2000,
+        "location": "Tokyo"
+      },
+      {
+        "id": 7,
+        "title": "Trip 7",
+        "price": 1300,
+        "location": "Paris"
+      },
+      {
+        "id": 8,
+        "title": "Trip 8",
+        "price": 1700,
+        "location": "London"
+      },
+      {
+        "id": 9,
+        "title": "Trip 9",
+        "price": 1100,
+        "location": "Sydney"
+      },
+      {
+        "id": 10,
+        "title": "Trip 10",
+        "price": 1400,
+        "location": "New York"
+      }
+    ]
+  }
+  
