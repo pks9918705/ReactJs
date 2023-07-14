@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, {   useState } from "react";
+import {useFetch }from "../hooks/useFetch";
 
 export default function Triplist() {
-  const [trip, setTrip] = useState([]);
+
   const [url, setUrl] = useState("http://localhost:3000/trips");
 
-  console.log(trip);
+  const {data : trips}=useFetch(url)
 
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setTrip(data);
-      });
-  }, [url]);
+   
 
   return (
     <div className="container">
@@ -29,7 +24,7 @@ export default function Triplist() {
       </div>
 
       <ul>
-        {trip.map((trip) => (
+        {trips && trips.map((trip) => (
           <li key={trip.id}>
             <h4>Title:{trip.title}</h4>
             <p>Price:{trip.price}</p>
